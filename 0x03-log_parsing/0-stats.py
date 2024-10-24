@@ -83,7 +83,7 @@ def main():
             # Print statistics every 10 lines
             if line_count == 10:
                 print_stats(total_size, status_codes)
-                line_count = 0
+                line_count = 0  # Reset the counter after 10 lines
 
     except KeyboardInterrupt:
         # Print stats on keyboard interruption
@@ -92,7 +92,8 @@ def main():
 
     finally:
         # Print final stats after finishing reading input
-        print_stats(total_size, status_codes)
+        if line_count > 0:  # Check if any remaining lines to print
+            print_stats(total_size, status_codes)
 
 
 if __name__ == "__main__":
